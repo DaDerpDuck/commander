@@ -1,13 +1,12 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.6.1/schema.json",
 	"files": {
-		"ignore": [
-			"./docs/.astro",
-			"./docs/dist",
-			"./out",
-			"./test/out",
-			"./package.json"
-		]
+		"ignore": ["./package.json"]
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
 	},
 	"organizeImports": {
 		"enabled": true

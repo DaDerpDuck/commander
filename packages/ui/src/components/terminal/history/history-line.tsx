@@ -1,6 +1,6 @@
+import { HistoryEntry } from "@rbxts/commander";
 import { BindingOrValue } from "@rbxts/pretty-react-hooks";
 import React, { useContext, useMemo } from "@rbxts/react";
-import { HistoryEntry } from "../../../../types";
 import { HISTORY_TEXT_SIZE } from "../../../constants/text";
 import { usePx } from "../../../hooks/use-px";
 import { OptionsContext } from "../../../providers/options-provider";

@@ -1,19 +1,19 @@
-import { useEventListener, useLatestCallback } from "@rbxts/pretty-react-hooks";
-import React, { useContext, useEffect, useMemo, useState } from "@rbxts/react";
-import { TextService } from "@rbxts/services";
 import {
 	CommandOptions,
+	CommanderClient,
+	HistoryEntry,
 	ImmutableRegistryPath,
 	RegistryPath,
-} from "../../../../shared";
-import { ArrayUtil } from "../../../../shared/util/data";
+} from "@rbxts/commander";
+import { ArrayUtil } from "@rbxts/commander/out/shared/util/data";
 import {
 	endsWithSpace,
 	formatPartsAsPath,
 	splitString,
-} from "../../../../shared/util/string";
-import { CommanderClient } from "../../../core";
-import { HistoryEntry } from "../../../types";
+} from "@rbxts/commander/out/shared/util/string";
+import { useEventListener, useLatestCallback } from "@rbxts/pretty-react-hooks";
+import React, { useContext, useEffect, useMemo, useState } from "@rbxts/react";
+import { TextService } from "@rbxts/services";
 import { HISTORY_TEXT_SIZE } from "../../constants/text";
 import { useMotion } from "../../hooks/use-motion";
 import { usePx } from "../../hooks/use-px";

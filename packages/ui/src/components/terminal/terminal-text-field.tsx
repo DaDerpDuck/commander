@@ -1,3 +1,8 @@
+import { CommanderClient } from "@rbxts/commander";
+import {
+	endsWithSpace,
+	formatPartsAsPath,
+} from "@rbxts/commander/out/shared/util/string";
 import {
 	BindingOrValue,
 	getBindingValue,
@@ -15,11 +20,6 @@ import React, {
 } from "@rbxts/react";
 import { useSelector } from "@rbxts/react-reflex";
 import { UserInputService } from "@rbxts/services";
-import {
-	endsWithSpace,
-	formatPartsAsPath,
-} from "../../../../shared/util/string";
-import { CommanderClient } from "../../../core";
 import { usePx } from "../../hooks/use-px";
 import { useStore } from "../../hooks/use-store";
 import { OptionsContext } from "../../providers/options-provider";

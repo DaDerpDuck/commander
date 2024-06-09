@@ -6,7 +6,7 @@ import {
 } from "@rbxts/commander";
 
 @Commander
-class KillCommand {
+export class KillCommand {
 	@Command({
 		name: "kill",
 		description: "Kill players",

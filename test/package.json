@@ -1,0 +1,19 @@
+{
+    "name": "test",
+    "private": true,
+    "scripts": {
+        "build": "rbxtsc --type=game && rojo build -o place.rbxl",
+        "dev": "rbxtsc -w --type=game",
+        "serve": "rojo serve"
+    },
+    "devDependencies": {
+        "@rbxts/compiler-types": "^2.3.0-types.1",
+        "@rbxts/types": "^1.0.779",
+        "roblox-ts": "2.3.0-dev-d7847ea",
+        "typescript": "~5.4"
+    },
+    "dependencies": {
+        "@rbxts/commander": "workspace:^",
+        "@rbxts/commander-ui": "workspace:^"
+    }
+}

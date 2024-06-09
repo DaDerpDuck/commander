@@ -6,7 +6,7 @@ import {
 } from "@rbxts/commander";
 
 @Commander
-class DamageCommand {
+export class DamageCommand {
 	@Command({
 		name: "damage",
 		description: "Damages a player",

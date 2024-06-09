@@ -8,7 +8,7 @@ import {
 
 @Commander
 @Group("info")
-class InfoCommand {
+export class InfoCommand {
 	@Command({
 		name: "view",
 		description: "Views information about a user",

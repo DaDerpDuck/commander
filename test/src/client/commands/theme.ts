@@ -1,5 +1,5 @@
-import { CommanderInterface, DefaultPalette } from "..";
-import { Command, CommandContext, CommanderType } from "../../shared";
+import { Command, CommandContext, CommanderType } from "@rbxts/commander";
+import { CommanderInterface, DefaultPalette } from "@rbxts/commander-ui";
 
 export class ThemeCommand {
 	@Command({

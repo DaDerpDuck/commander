@@ -1,5 +1,4 @@
-import { RegistryPath } from "../../../shared";
-import { CommanderClient } from "../../core";
+import { CommanderClient, RegistryPath } from "@rbxts/commander";
 import { IS_EDIT } from "../constants/util";
 
 export function getArgumentNames(path: RegistryPath) {

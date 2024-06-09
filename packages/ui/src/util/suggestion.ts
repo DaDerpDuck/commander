@@ -1,7 +1,6 @@
+import { CommanderClient, RegistryPath } from "@rbxts/commander";
+import { ArrayUtil } from "@rbxts/commander/out/shared/util/data";
 import { Players } from "@rbxts/services";
-import { RegistryPath } from "../../../shared";
-import { ArrayUtil } from "../../../shared/util/data";
-import { CommanderClient } from "../../core";
 import { Suggestion } from "../types";
 
 const MAX_OTHER_SUGGESTIONS = 3;

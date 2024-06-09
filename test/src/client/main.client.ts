@@ -1,4 +1,5 @@
-import { CommanderClient, CommanderInterface } from "@rbxts/commander";
+import { CommanderClient } from "@rbxts/commander";
+import { CommanderInterface } from "@rbxts/commander-ui";
 
 CommanderClient.start(
 	(registry) => {
