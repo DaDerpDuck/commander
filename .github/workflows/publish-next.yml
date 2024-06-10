@@ -2,8 +2,8 @@ name: Publish @next
 
 on:
     workflow_dispatch:
-    schedule:
-        - cron: "0 7 * * *"
+    # schedule:
+    #     - cron: "0 7 * * *"
 
 jobs:
     check:
@@ -23,7 +23,7 @@ jobs:
 
             - name: Check version
               run: |
-                  LATEST_VERSION=$(npm view @rbxts/commander dist-tags.next)
+                  LATEST_VERSION=$(npm view @rbxts/centurion dist-tags.next)
                   echo "VERSION_CHANGED=$(test ${{ env.VERSION }} != $LATEST_VERSION && echo true || echo false)" >> $GITHUB_ENV
 
     publish:
