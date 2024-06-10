@@ -6,6 +6,12 @@
     "docs",
     "test"
   ],
+  "scripts": {
+    "packages:build": "yarn workspaces foreach -Rpt --from \"{@rbxts/commander,@rbxts/commander-ui}\" run build",
+    "test:build": "yarn workspace test build",
+    "test:dev": "yarn workspace test dev",
+    "test:serve": "yarn workspace test serve"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.8.0"
   }

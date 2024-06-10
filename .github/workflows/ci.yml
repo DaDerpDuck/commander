@@ -22,3 +22,6 @@ jobs:
 
             - name: Run Biome
               run: yarn biome ci
+
+            - name: Build packages
+              run: yarn packages:build
