@@ -1,4 +1,4 @@
-import { CommanderClient, RegistryPath } from "@rbxts/commander";
+import { BaseRegistry, RegistryPath } from "@rbxts/commander";
 import { ArrayUtil } from "@rbxts/commander/out/shared/util/data";
 import { Players } from "@rbxts/services";
 import { Suggestion } from "../types";
@@ -37,11 +37,12 @@ function getSortedIndices(max: number, strings: string[], text?: string) {
 }
 
 export function getArgumentSuggestion(
+	registry: BaseRegistry,
 	path: RegistryPath,
 	index: number,
 	text?: string,
 ): Suggestion | undefined {
-	const command = CommanderClient.registry().getCommand(path);
+	const command = registry.getCommand(path);
 	if (command === undefined) return;
 
 	const args = command.options.arguments;
@@ -49,7 +50,7 @@ export function getArgumentSuggestion(
 	if (index < 0 || index >= args.size()) return;
 
 	const arg = args[index];
-	const typeObject = CommanderClient.registry().getType(arg.type);
+	const typeObject = registry.getType(arg.type);
 	if (typeObject === undefined) return;
 
 	const argSuggestions =
@@ -102,13 +103,14 @@ export function getArgumentSuggestion(
 }
 
 export function getCommandSuggestion(
+	registry: BaseRegistry,
 	parentPath?: RegistryPath,
 	text?: string,
 ): Suggestion | undefined {
 	const paths =
 		parentPath !== undefined
-			? CommanderClient.registry().getChildPaths(parentPath)
-			: CommanderClient.registry().getRootPaths();
+			? registry.getChildPaths(parentPath)
+			: registry.getRootPaths();
 	if (paths.isEmpty()) return;
 
 	const pathNames = paths.map((path) => path.tail());
@@ -121,8 +123,8 @@ export function getCommandSuggestion(
 
 	const firstPath = paths[sortedPaths[0]];
 	const mainData =
-		CommanderClient.registry().getCommand(firstPath)?.options ??
-		CommanderClient.registry().getGroup(firstPath)?.options;
+		registry.getCommand(firstPath)?.options ??
+		registry.getGroup(firstPath)?.options;
 	if (mainData === undefined) return;
 
 	const otherNames =

@@ -1423,6 +1423,8 @@ __metadata:
     rbxts-transformer-services: "npm:^1.1.1"
     roblox-ts: "npm:2.3.0-dev-d7847ea"
     typescript: "npm:~5.4"
+  peerDependencies:
+    "@rbxts/commander": "workspace:^"
   languageName: unknown
   linkType: soft
 

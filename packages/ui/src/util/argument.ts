@@ -1,12 +1,12 @@
-import { CommanderClient, RegistryPath } from "@rbxts/commander";
+import { BaseRegistry, RegistryPath } from "@rbxts/commander";
 import { IS_EDIT } from "../constants/util";
 
-export function getArgumentNames(path: RegistryPath) {
+export function getArgumentNames(registry: BaseRegistry, path: RegistryPath) {
 	if (IS_EDIT) {
 		return [];
 	}
 
-	const command = CommanderClient.registry().getCommand(path);
+	const command = registry.getCommand(path);
 	if (command === undefined || command.options.arguments === undefined)
 		return [];
 

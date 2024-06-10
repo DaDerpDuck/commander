@@ -1,6 +1,6 @@
 {
 	"name": "commander",
-	"globIgnorePaths": ["node_modules/*/**/*.json"],
+	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
 	"tree": {
 		"$className": "DataModel",
 		"ReplicatedStorage": {

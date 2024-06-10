@@ -1,10 +1,20 @@
 import { CommandContextData } from "../shared";
 import { SyncData } from "../shared/network";
 import { SharedOptions } from "../shared/options";
+import { ClientDispatcher } from "./dispatcher";
+import { ClientRegistry } from "./registry";
+
+export interface ClientAPI {
+	registry: ClientRegistry;
+	dispatcher: ClientDispatcher;
+	options: ClientOptions;
+}
+
+export type ClientInterface = (api: ClientAPI) => void;
 
 export interface ClientOptions extends SharedOptions {
 	historyLength: number;
-	interface?: () => void;
+	interface?: ClientInterface;
 	network?: ClientNetworkOptions;
 }
 

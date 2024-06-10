@@ -1,6 +1,7 @@
 import "./config";
 
 import { Signal } from "@rbxts/beacon";
+import { ClientInterface } from "@rbxts/commander";
 import React, { StrictMode } from "@rbxts/react";
 import { createPortal, createRoot } from "@rbxts/react-roblox";
 import { ContentProvider, Players } from "@rbxts/services";
@@ -18,8 +19,10 @@ export namespace CommanderInterface {
 		optionsChanged.Fire(options);
 	}
 
-	export function create(options: Partial<InterfaceOptions> = {}) {
-		return () => {
+	export function create(
+		options: Partial<InterfaceOptions> = {},
+	): ClientInterface {
+		return (api) => {
 			const root = createRoot(new Instance("Folder"));
 			const target = Players.LocalPlayer.WaitForChild("PlayerGui");
 
@@ -47,6 +50,7 @@ export namespace CommanderInterface {
 				createPortal(
 					<StrictMode>
 						<RootProvider
+							api={api}
 							options={{ ...DEFAULT_INTERFACE_OPTIONS, ...options }}
 							optionsChanged={optionsChanged}
 						>

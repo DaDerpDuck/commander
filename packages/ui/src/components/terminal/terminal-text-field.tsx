@@ -1,4 +1,3 @@
-import { CommanderClient } from "@rbxts/commander";
 import {
 	endsWithSpace,
 	formatPartsAsPath,
@@ -14,7 +13,6 @@ import React, {
 	useCallback,
 	useContext,
 	useEffect,
-	useMemo,
 	useRef,
 	useState,
 } from "@rbxts/react";
@@ -22,6 +20,7 @@ import { useSelector } from "@rbxts/react-reflex";
 import { UserInputService } from "@rbxts/services";
 import { usePx } from "../../hooks/use-px";
 import { useStore } from "../../hooks/use-store";
+import { ApiContext } from "../../providers/api-provider";
 import { OptionsContext } from "../../providers/options-provider";
 import { selectVisible } from "../../store/app";
 import { selectCommand } from "../../store/command";
@@ -54,6 +53,7 @@ export function TerminalTextField({
 }: TerminalTextFieldProps) {
 	const px = usePx();
 	const ref = useRef<TextBox>();
+	const api = useContext(ApiContext);
 	const options = useContext(OptionsContext);
 	const store = useStore();
 
@@ -62,8 +62,6 @@ export function TerminalTextField({
 	const [text, setText] = useBinding("");
 	const [suggestionText, setSuggestionText] = useBinding("");
 	const [valid, setValid] = useState(false);
-
-	const registry = useMemo(() => CommanderClient.registry(), []);
 
 	const traverseHistory = useCallback((up: boolean) => {
 		const history = store.getState().history.commandHistory;
@@ -147,7 +145,7 @@ export function TerminalTextField({
 		}
 
 		let newText = getBindingValue(text);
-		const argNames = getArgumentNames(command);
+		const argNames = getArgumentNames(api.registry, command);
 		for (const i of $range(argIndex, argNames.size() - 1)) {
 			if (i === argIndex && !atNextPart) {
 				if (!currentSuggestion.others.isEmpty()) {
@@ -198,7 +196,7 @@ export function TerminalTextField({
 				.getValue()
 				.gsub("%s+", " ")[0]
 				.split(" ");
-			const nextCommand = registry.getCommandByString(
+			const nextCommand = api.registry.getCommandByString(
 				formatPartsAsPath(suggestionTextParts),
 			)?.options;
 			if (
@@ -224,7 +222,7 @@ export function TerminalTextField({
 		}
 
 		const argIndex = state.command.argIndex;
-		const commandArgs = registry.getCommand(commandPath)?.options.arguments;
+		const commandArgs = api.registry.getCommand(commandPath)?.options.arguments;
 		if (argIndex === undefined || commandArgs === undefined) return;
 
 		let newText = getBindingValue(text);
@@ -275,10 +273,7 @@ export function TerminalTextField({
 				event={{
 					FocusLost: (rbx, enterPressed) => {
 						if (!enterPressed) return;
-						store.addCommandHistory(
-							rbx.Text,
-							CommanderClient.options().historyLength,
-						);
+						store.addCommandHistory(rbx.Text, api.options.historyLength);
 						store.setCommandHistoryIndex(-1);
 						onSubmit?.(rbx.Text);
 						ref.current?.CaptureFocus();

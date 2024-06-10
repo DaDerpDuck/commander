@@ -54,7 +54,11 @@ export namespace CommanderClient {
 		callback?.(registryInstance);
 		await registryInstance.sync();
 		started = true;
-		options.interface?.();
+		options.interface?.({
+			registry: registryInstance,
+			dispatcher: dispatcherInstance,
+			options: optionsObject,
+		});
 	}
 
 	export function registry() {

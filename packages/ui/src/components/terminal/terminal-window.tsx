@@ -1,6 +1,5 @@
 import {
 	CommandOptions,
-	CommanderClient,
 	HistoryEntry,
 	ImmutableRegistryPath,
 	RegistryPath,
@@ -18,6 +17,7 @@ import { HISTORY_TEXT_SIZE } from "../../constants/text";
 import { useMotion } from "../../hooks/use-motion";
 import { usePx } from "../../hooks/use-px";
 import { useStore } from "../../hooks/use-store";
+import { ApiContext } from "../../providers/api-provider";
 import { OptionsContext } from "../../providers/options-provider";
 import { HistoryLineData, Suggestion } from "../../types";
 import {
@@ -35,10 +35,11 @@ const TEXT_FIELD_HEIGHT = 40;
 export function TerminalWindow() {
 	const px = usePx();
 	const store = useStore();
+	const api = useContext(ApiContext);
 	const options = useContext(OptionsContext);
 
 	const [history, setHistory] = useState<HistoryEntry[]>(
-		CommanderClient.dispatcher().getHistory(),
+		api.dispatcher.getHistory(),
 	);
 	const [historyData, setHistoryData] = useState<HistoryData>({
 		lines: [],
@@ -58,8 +59,6 @@ export function TerminalWindow() {
 			return new UDim2(1, 0, 0, math.ceil(px(TEXT_FIELD_HEIGHT + 16) + y));
 		});
 	}, [px]);
-
-	const registry = useMemo(() => CommanderClient.registry(), []);
 
 	const checkMissingArgs = useLatestCallback(
 		(path: ImmutableRegistryPath, command: CommandOptions) => {
@@ -90,7 +89,7 @@ export function TerminalWindow() {
 		},
 	);
 
-	useEventListener(CommanderClient.dispatcher().historyUpdated, (entries) => {
+	useEventListener(api.dispatcher.historyUpdated, (entries) => {
 		setHistory([...entries]);
 	});
 
@@ -174,7 +173,8 @@ export function TerminalWindow() {
 						// The current path still leads to the command, so it's valid
 						atCommand = true;
 					} else if (
-						registry.getCommandByString(formatPartsAsPath(parts)) !== undefined
+						api.registry.getCommandByString(formatPartsAsPath(parts)) !==
+						undefined
 					) {
 						atCommand = true;
 						commandPath = new ImmutableRegistryPath(parts);
@@ -183,12 +183,12 @@ export function TerminalWindow() {
 						for (const part of parts) {
 							currentPath.append(part);
 
-							if (registry.getCommand(currentPath) !== undefined) {
+							if (api.registry.getCommand(currentPath) !== undefined) {
 								atCommand = true;
 								break;
 							}
 
-							if (registry.getChildPaths(currentPath).isEmpty()) {
+							if (api.registry.getChildPaths(currentPath).isEmpty()) {
 								atCommand = false;
 								break;
 							}
@@ -210,7 +210,7 @@ export function TerminalWindow() {
 
 					const command =
 						commandPath !== undefined
-							? registry.getCommand(commandPath)?.options
+							? api.registry.getCommand(commandPath)?.options
 							: undefined;
 					if (commandPath !== undefined && command !== undefined) {
 						store.setTextValid(
@@ -242,7 +242,11 @@ export function TerminalWindow() {
 							: commandPath.size() !== 1
 								? commandPath.parent()
 								: undefined;
-						suggestion = getCommandSuggestion(parentPath, currentTextPart);
+						suggestion = getCommandSuggestion(
+							api.registry,
+							parentPath,
+							currentTextPart,
+						);
 					} else if (commandPath !== undefined) {
 						// Handle argument suggestions
 						const argIndex =
@@ -251,6 +255,7 @@ export function TerminalWindow() {
 
 						store.setArgIndex(argIndex);
 						suggestion = getArgumentSuggestion(
+							api.registry,
 							commandPath,
 							argIndex,
 							currentTextPart,
@@ -264,12 +269,11 @@ export function TerminalWindow() {
 					const commandPath = storeState.command.path;
 					const command =
 						commandPath !== undefined
-							? registry.getCommand(commandPath)
+							? api.registry.getCommand(commandPath)
 							: undefined;
 
-					const dispatcher = CommanderClient.dispatcher();
 					if (commandPath === undefined || command === undefined) {
-						dispatcher.addHistoryEntry({
+						api.dispatcher.addHistoryEntry({
 							success: false,
 							text: "Command not found.",
 							sentAt: os.time(),
@@ -282,14 +286,14 @@ export function TerminalWindow() {
 						command.options as CommandOptions,
 					);
 					if (argCheckMessage !== undefined) {
-						dispatcher.addHistoryEntry({
+						api.dispatcher.addHistoryEntry({
 							success: false,
 							text: argCheckMessage,
 							sentAt: os.time(),
 						});
 						return;
 					}
-					dispatcher.run(commandPath, text);
+					api.dispatcher.run(commandPath, text);
 				}}
 			/>
 		</Frame>

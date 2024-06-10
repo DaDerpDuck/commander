@@ -12,6 +12,7 @@
         "build": "rbxtsc --verbose"
     },
     "devDependencies": {
+        "@rbxts/commander": "workspace:^",
         "@rbxts/compiler-types": "2.3.0-types.1",
         "@rbxts/types": "^1.0.779",
         "rbxts-transformer-services": "^1.1.1",
@@ -20,7 +21,6 @@
     },
     "dependencies": {
         "@rbxts/beacon": "^2.1.1",
-        "@rbxts/commander": "workspace:^",
         "@rbxts/pretty-react-hooks": "^0.5.0",
         "@rbxts/react": "^0.3.3",
         "@rbxts/react-reflex": "^0.3.4",
@@ -28,5 +28,8 @@
         "@rbxts/reflex": "^4.3.1",
         "@rbxts/ripple": "^0.8.1",
         "@rbxts/services": "^1.5.4"
+    },
+    "peerDependencies": {
+        "@rbxts/commander": "workspace:^"
     }
 }
