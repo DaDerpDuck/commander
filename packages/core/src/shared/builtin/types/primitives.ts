@@ -1,5 +1,5 @@
 import { t } from "@rbxts/t";
-import { CommanderType } from ".";
+import { BuiltInType } from ".";
 import { TransformResult, TypeBuilder } from "../../util/type";
 
 const transformToNumber = (text: string) => {
@@ -11,17 +11,17 @@ const transformToNumber = (text: string) => {
 	return TransformResult.ok(num);
 };
 
-export const StringType = TypeBuilder.create<string>(CommanderType.String)
+export const StringType = TypeBuilder.create<string>(BuiltInType.String)
 	.validate(t.string)
 	.transform((text) => TransformResult.ok(text))
 	.build();
 
-export const NumberType = TypeBuilder.create<number>(CommanderType.Number)
+export const NumberType = TypeBuilder.create<number>(BuiltInType.Number)
 	.validate(t.number)
 	.transform(transformToNumber)
 	.build();
 
-export const IntegerType = TypeBuilder.create<number>(CommanderType.Integer)
+export const IntegerType = TypeBuilder.create<number>(BuiltInType.Integer)
 	.validate(t.integer)
 	.transform((text) => {
 		const numResult = transformToNumber(text);
@@ -38,7 +38,7 @@ export const IntegerType = TypeBuilder.create<number>(CommanderType.Integer)
 
 const truthyValues = new Set<string>(["true", "yes", "y"]);
 const falsyValues = new Set<string>(["false", "no", "n"]);
-export const BooleanType = TypeBuilder.create<boolean>(CommanderType.Boolean)
+export const BooleanType = TypeBuilder.create<boolean>(BuiltInType.Boolean)
 	.validate(t.boolean)
 	.transform((text) => {
 		const textLower = text.lower();

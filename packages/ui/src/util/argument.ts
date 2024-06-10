@@ -1,4 +1,4 @@
-import { BaseRegistry, RegistryPath } from "@rbxts/commander";
+import { BaseRegistry, RegistryPath } from "@rbxts/centurion";
 import { IS_EDIT } from "../constants/util";
 
 export function getArgumentNames(registry: BaseRegistry, path: RegistryPath) {

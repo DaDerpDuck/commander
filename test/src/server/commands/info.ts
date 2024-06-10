@@ -1,12 +1,12 @@
 import {
+	BuiltInType,
+	Centurion,
 	Command,
 	CommandContext,
-	Commander,
-	CommanderType,
 	Group,
-} from "@rbxts/commander";
+} from "@rbxts/centurion";
 
-@Commander
+@Centurion
 @Group("info")
 export class InfoCommand {
 	@Command({
@@ -16,7 +16,7 @@ export class InfoCommand {
 			{
 				name: "player",
 				description: "Player to view information for",
-				type: CommanderType.Player,
+				type: BuiltInType.Player,
 			},
 		],
 	})

@@ -1,4 +1,4 @@
-import { ImmutableRegistryPath } from "@rbxts/commander";
+import { ImmutableRegistryPath } from "@rbxts/centurion";
 import { createProducer } from "@rbxts/reflex";
 
 export interface CommandState {

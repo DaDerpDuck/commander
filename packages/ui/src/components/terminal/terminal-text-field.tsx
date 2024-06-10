@@ -1,7 +1,7 @@
 import {
 	endsWithSpace,
 	formatPartsAsPath,
-} from "@rbxts/commander/out/shared/util/string";
+} from "@rbxts/centurion/out/shared/util/string";
 import {
 	BindingOrValue,
 	getBindingValue,

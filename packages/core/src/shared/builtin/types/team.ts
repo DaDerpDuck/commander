@@ -1,9 +1,9 @@
 import { Teams } from "@rbxts/services";
 import { t } from "@rbxts/t";
-import { CommanderType } from ".";
+import { BuiltInType } from ".";
 import { TransformResult, TypeBuilder } from "../../util/type";
 
-export const TeamType = TypeBuilder.create<Team>(CommanderType.Team)
+export const TeamType = TypeBuilder.create<Team>(BuiltInType.Team)
 	.validate(t.instanceOf("Team"))
 	.transform((text) => {
 		const team = Teams.FindFirstChild(text);

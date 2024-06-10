@@ -1,4 +1,4 @@
-import { CommanderServer } from "@rbxts/commander";
+import { CommanderServer } from "@rbxts/centurion";
 
 // Start commander
 CommanderServer.start((registry) => {

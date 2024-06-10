@@ -3,7 +3,7 @@
 	<img src="docs/src/assets/logo.webp" width="150" />
   </a>
 
-  <h1>Commander</h1>
+  <h1>Centurion</h1>
 
   <p>
     <strong>A flexible and extensible command framework for roblox-ts</strong>

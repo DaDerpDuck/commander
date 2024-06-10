@@ -7,14 +7,14 @@ import { ServerOptions } from "./types";
 
 const IS_SERVER = RunService.IsServer();
 
-export namespace CommanderServer {
+export namespace CenturionServer {
 	let started = false;
 	const registryInstance = new ServerRegistry();
 	const dispatcherInstance = new ServerDispatcher(registryInstance);
 	let optionsObject = DEFAULT_SERVER_OPTIONS;
 
 	/**
-	 * Starts {@link CommanderServer}.
+	 * Starts {@link CenturionServer}.
 	 *
 	 * @param callback The run callback
 	 * @param options Server options
@@ -23,8 +23,8 @@ export namespace CommanderServer {
 		callback?: (registry: ServerRegistry) => void,
 		options: Partial<ServerOptions> = {},
 	) {
-		assert(IS_SERVER, "CommanderServer can only be started from the server");
-		assert(!started, "Commander has already been started");
+		assert(IS_SERVER, "CenturionServer can only be started from the server");
+		assert(!started, "Centurion has already been started");
 
 		optionsObject = {
 			...DEFAULT_SERVER_OPTIONS,
@@ -73,6 +73,6 @@ export namespace CommanderServer {
 
 	function assertAccess(name: string) {
 		assert(IS_SERVER, `Server ${name} cannot be accessed from the server`);
-		assert(started, "Commander has not been started yet");
+		assert(started, "Centurion has not been started yet");
 	}
 }

@@ -1,11 +1,11 @@
 import {
+	BuiltInType,
+	Centurion,
 	Command,
 	CommandContext,
-	Commander,
-	CommanderType,
-} from "@rbxts/commander";
+} from "@rbxts/centurion";
 
-@Commander
+@Centurion
 export class KillCommand {
 	@Command({
 		name: "kill",
@@ -14,7 +14,7 @@ export class KillCommand {
 			{
 				name: "players",
 				description: "Players to kill",
-				type: CommanderType.Players,
+				type: BuiltInType.Players,
 			},
 		],
 	})

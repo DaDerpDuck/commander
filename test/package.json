@@ -13,7 +13,7 @@
         "typescript": "~5.4"
     },
     "dependencies": {
-        "@rbxts/commander": "workspace:^",
-        "@rbxts/commander-ui": "workspace:^"
+        "@rbxts/centurion": "workspace:^",
+        "@rbxts/centurion-ui": "workspace:^"
     }
 }

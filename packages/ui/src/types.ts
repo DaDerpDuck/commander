@@ -1,4 +1,4 @@
-import { HistoryEntry } from "@rbxts/commander";
+import { HistoryEntry } from "@rbxts/centurion";
 import { InterfacePalette } from "./palette";
 
 export interface InterfaceOptions {

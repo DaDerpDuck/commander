@@ -8,7 +8,7 @@ import { Code } from '@astrojs/starlight/components';
 ## Kick Command
 
 <Code lang="ts" code={`
-import { Command, CommandGuard, CommandInteraction, Commander, CommanderType, Guard } from "@rbxts/commander";
+import { Command, CommandGuard, CommandInteraction, Commander, CommanderType, Guard } from "@rbxts/centurion";
 
 const isAdmin: CommandGuard = (interaction) => {
     if (interaction.executor.UserId !== 1) {

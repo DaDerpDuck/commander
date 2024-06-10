@@ -13,7 +13,7 @@ export class ClientDispatcher extends BaseDispatcher {
 	/**
 	 * Initialises the client dispatcher.
 	 *
-	 * @param options The client options provided when starting Commander
+	 * @param options The client options provided when starting Centurion
 	 */
 	init(options: ClientOptions) {
 		super.init(options);

@@ -1,4 +1,4 @@
-import { ClientAPI } from "@rbxts/commander";
+import { ClientAPI } from "@rbxts/centurion";
 import React, { createContext } from "@rbxts/react";
 
 interface ApiProviderProps extends React.PropsWithChildren {

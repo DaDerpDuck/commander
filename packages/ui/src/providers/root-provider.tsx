@@ -1,5 +1,5 @@
 import { Signal } from "@rbxts/beacon";
-import { ClientAPI } from "@rbxts/commander";
+import { ClientAPI } from "@rbxts/centurion";
 import React from "@rbxts/react";
 import { ReflexProvider } from "@rbxts/react-reflex";
 import { store } from "../store";

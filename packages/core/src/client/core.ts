@@ -5,7 +5,7 @@ import { DEFAULT_CLIENT_OPTIONS } from "./options";
 import { ClientRegistry } from "./registry";
 import { ClientOptions } from "./types";
 
-export namespace CommanderClient {
+export namespace CenturionClient {
 	let started = false;
 	const registryInstance = new ClientRegistry();
 	const dispatcherInstance = new ClientDispatcher(registryInstance);
@@ -14,7 +14,7 @@ export namespace CommanderClient {
 	const IS_CLIENT = RunService.IsClient();
 
 	/**
-	 * Starts {@link CommanderClient}.
+	 * Starts {@link CenturionClient}.
 	 *
 	 * @param callback The run callback
 	 * @param options Client options
@@ -23,8 +23,8 @@ export namespace CommanderClient {
 		callback?: (registry: ClientRegistry) => void,
 		options: Partial<ClientOptions> = {},
 	) {
-		assert(IS_CLIENT, "CommanderClient can only be started from the client");
-		assert(!started, "Commander has already been started");
+		assert(IS_CLIENT, "CenturionClient can only be started from the client");
+		assert(!started, "Centurion has already been started");
 
 		optionsObject = {
 			...DEFAULT_CLIENT_OPTIONS,
@@ -78,6 +78,6 @@ export namespace CommanderClient {
 
 	function assertAccess(name: string) {
 		assert(IS_CLIENT, `Client ${name} cannot be accessed from the server`);
-		assert(started, "Commander has not been started yet");
+		assert(started, "Centurion has not been started yet");
 	}
 }

@@ -1,5 +1,5 @@
-import { BaseRegistry, RegistryPath } from "@rbxts/commander";
-import { ArrayUtil } from "@rbxts/commander/out/shared/util/data";
+import { BaseRegistry, RegistryPath } from "@rbxts/centurion";
+import { ArrayUtil } from "@rbxts/centurion/out/shared/util/data";
 import { Players } from "@rbxts/services";
 import { Suggestion } from "../types";
 

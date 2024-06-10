@@ -1,4 +1,4 @@
-import { HistoryEntry } from "@rbxts/commander";
+import { HistoryEntry } from "@rbxts/centurion";
 import { BindingOrValue } from "@rbxts/pretty-react-hooks";
 import React, { useContext, useMemo } from "@rbxts/react";
 import { HISTORY_TEXT_SIZE } from "../../../constants/text";

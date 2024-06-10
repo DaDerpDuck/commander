@@ -1,6 +1,6 @@
 import { Players } from "@rbxts/services";
 import { t } from "@rbxts/t";
-import { CommanderType } from ".";
+import { BuiltInType } from ".";
 import { TransformResult, TypeBuilder } from "../../util/type";
 
 const getPlayer = (
@@ -34,13 +34,13 @@ const getPlayerSuggestions = () => [
 ];
 
 const isPlayer = t.instanceOf("Player");
-export const PlayerType = TypeBuilder.create<Player>(CommanderType.Player)
+export const PlayerType = TypeBuilder.create<Player>(BuiltInType.Player)
 	.validate(isPlayer)
 	.transform(getPlayer)
 	.suggestions(getPlayerSuggestions)
 	.build();
 
-export const PlayersType = TypeBuilder.create<Player[]>(CommanderType.Players)
+export const PlayersType = TypeBuilder.create<Player[]>(BuiltInType.Players)
 	.validate(t.array(isPlayer))
 	.transform((text, executor) => {
 		let players: Player[] = [];

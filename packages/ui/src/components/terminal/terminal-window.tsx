@@ -3,13 +3,13 @@ import {
 	HistoryEntry,
 	ImmutableRegistryPath,
 	RegistryPath,
-} from "@rbxts/commander";
-import { ArrayUtil } from "@rbxts/commander/out/shared/util/data";
+} from "@rbxts/centurion";
+import { ArrayUtil } from "@rbxts/centurion/out/shared/util/data";
 import {
 	endsWithSpace,
 	formatPartsAsPath,
 	splitString,
-} from "@rbxts/commander/out/shared/util/string";
+} from "@rbxts/centurion/out/shared/util/string";
 import { useEventListener, useLatestCallback } from "@rbxts/pretty-react-hooks";
 import React, { useContext, useEffect, useMemo, useState } from "@rbxts/react";
 import { TextService } from "@rbxts/services";

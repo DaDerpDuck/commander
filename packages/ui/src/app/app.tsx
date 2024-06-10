@@ -1,7 +1,7 @@
 import "./config";
 
 import { Signal } from "@rbxts/beacon";
-import { ClientInterface } from "@rbxts/commander";
+import { ClientInterface } from "@rbxts/centurion";
 import React, { StrictMode } from "@rbxts/react";
 import { createPortal, createRoot } from "@rbxts/react-roblox";
 import { ContentProvider, Players } from "@rbxts/services";
@@ -10,7 +10,7 @@ import { RootProvider } from "../providers/root-provider";
 import { InterfaceOptions } from "../types";
 import { TerminalApp } from "./terminal-app";
 
-export namespace CommanderInterface {
+export namespace CenturionInterface {
 	const MAX_PRELOAD_ATTEMPTS = 3;
 	const PRELOAD_ATTEMPT_INTERVAL = 3;
 	const optionsChanged = new Signal<[options: Partial<InterfaceOptions>]>();

@@ -1,7 +1,7 @@
-import { CommanderClient } from "@rbxts/commander";
-import { CommanderInterface } from "@rbxts/commander-ui";
+import { CenturionClient } from "@rbxts/centurion";
+import { CenturionInterface } from "@rbxts/centurion-ui";
 
-CommanderClient.start(
+CenturionClient.start(
 	(registry) => {
 		if (script.Parent === undefined) return;
 		const commandContainer = script.Parent.WaitForChild("commands");
@@ -9,10 +9,10 @@ CommanderClient.start(
 		registry.register();
 	},
 	{
-		interface: CommanderInterface.create(),
+		interface: CenturionInterface.create(),
 	},
 )
 	.catch((err) => {
-		warn(`An error occurred and Commander could not be started: ${err}`);
+		warn(`An error occurred and Centurion could not be started: ${err}`);
 	})
 	.await();

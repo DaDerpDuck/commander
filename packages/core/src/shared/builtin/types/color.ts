@@ -1,5 +1,5 @@
 import { t } from "@rbxts/t";
-import { CommanderType } from ".";
+import { BuiltInType } from ".";
 import { TransformResult, TypeBuilder } from "../../util/type";
 
 const brickColorNames = new Set([
@@ -216,7 +216,7 @@ const brickColorNames = new Set([
 const brickColorNameArray = [...brickColorNames];
 
 export const BrickColorType = TypeBuilder.create<BrickColor>(
-	CommanderType.BrickColor,
+	BuiltInType.BrickColor,
 )
 	.validate(t.BrickColor)
 	.transform((text) => {
@@ -234,7 +234,7 @@ function isHexColor(value: unknown): value is Color3 {
 	return !value.match(HEX_COLOR_PATTERN).isEmpty();
 }
 
-export const HexColorType = TypeBuilder.create<Color3>(CommanderType.HexColor)
+export const HexColorType = TypeBuilder.create<Color3>(BuiltInType.HexColor)
 	.validate(isHexColor)
 	.transform((text) => {
 		if (text.match(HEX_COLOR_PATTERN).isEmpty())

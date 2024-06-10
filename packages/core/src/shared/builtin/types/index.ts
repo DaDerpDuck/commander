@@ -1,4 +1,4 @@
-export const CommanderType = {
+export const BuiltInType = {
 	BrickColor: "brickColor",
 	HexColor: "hexColor",
 	String: "string",
