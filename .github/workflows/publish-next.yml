@@ -7,7 +7,7 @@ on:
 
 jobs:
     check:
-        if: github.repository == 'paradoxuum/commander' && github.ref == 'refs/heads/main'
+        if: github.repository == 'paradoxuum/centurion' && github.ref == 'refs/heads/main'
         runs-on: ubuntu-latest
         outputs:
             version: ${{ env.VERSION }}

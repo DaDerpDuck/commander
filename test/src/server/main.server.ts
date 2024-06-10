@@ -1,7 +1,6 @@
-import { CommanderServer } from "@rbxts/centurion";
+import { CenturionServer } from "@rbxts/centurion";
 
-// Start commander
-CommanderServer.start((registry) => {
+CenturionServer.start((registry) => {
 	registry.registerGroup(
 		{
 			name: "info",

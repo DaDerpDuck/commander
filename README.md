@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://commander.paradoxum.dev/" target="_blank">
+  <a href="https://centurion.paradoxum.dev/" target="_blank">
 	<img src="docs/src/assets/logo.webp" width="150" />
   </a>
 
@@ -10,7 +10,7 @@
   </p>
 
   <h4>
-    <a href="https://commander.paradoxum.dev/">Documentation</a>
+    <a href="https://centurion.paradoxum.dev/">Documentation</a>
   </h4>
 </div>
 
@@ -19,7 +19,7 @@
 
 ## About
 
-Commander is a command framework built for roblox-ts.
+Centurion is a command framework built for roblox-ts.
 
 - Commands are defined using decorators in an easy and readable manner.
 - Custom argument types can be created, allowing for a great deal of flexibility for your commands.

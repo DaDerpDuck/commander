@@ -1,5 +1,5 @@
 {
-	"name": "commander",
+	"name": "centurion",
 	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
 	"tree": {
 		"$className": "DataModel",
